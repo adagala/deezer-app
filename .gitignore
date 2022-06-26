@@ -13,6 +13,7 @@
 
 # firebase
 /.firebase
+ui-debug.log
 
 # misc
 .DS_Store
