@@ -1,11 +1,14 @@
 import { useParams } from "react-router-dom";
+import Artist from "../components/artist/Artist";
 
 function ArtistDetails() {
-  let { artistId } = useParams();
+  let params = useParams();
+  const artistId = params.artistId as string;
+
   return (
-    <main style={{ padding: "1rem 0" }}>
-      <h2>Artist Information</h2>
-      <h3>ID: {artistId}</h3>
+    <main>
+      ID: {artistId}
+      <Artist artistId={artistId} />
     </main>
   );
 }
