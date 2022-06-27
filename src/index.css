@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply mx-4 md:mx-28 lg:mx-60;
+  @apply mx-6 md:mx-28 lg:mx-60;
 }

@@ -9,6 +9,7 @@ const Track = ({ track }: { track: ITrack }) => {
         className="w-full"
         src={track.album.cover_medium}
         alt="Artist Img"
+        loading="lazy"
       ></img>
       <div className="text-lg font-semibold text-gray-400">
         {getDuration({ seconds: track.duration })}

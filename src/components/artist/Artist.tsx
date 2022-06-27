@@ -48,7 +48,22 @@ const Artist = ({ artistId }: { artistId: string }) => {
         <div className="my-2 md:w-2/3 bg-gray-300 h-40 md:h-80 flex items-center">
           <div className="w-full">
             {isLoading ? (
-              <div>Loading Artist...</div>
+              <div className="h-40 text-2xl flex items-center justify-center font-bold">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="animate-spin h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
+                </svg>
+              </div>
             ) : (
               <div className="p-4 flex items-center justify-between rounded-sm">
                 <div>
@@ -62,8 +77,11 @@ const Artist = ({ artistId }: { artistId: string }) => {
                 <div>
                   <img
                     className="md:hidden"
-                    src={artist.picture_small}
+                    src={artist.picture_medium}
+                    height={90}
+                    width={90}
                     alt="artist"
+                    loading="lazy"
                   />
                   <img
                     className="hidden md:block"
@@ -71,6 +89,7 @@ const Artist = ({ artistId }: { artistId: string }) => {
                     alt="artist"
                     height={150}
                     width={150}
+                    loading="lazy"
                   />
                 </div>
               </div>
