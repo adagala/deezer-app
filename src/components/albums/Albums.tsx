@@ -42,7 +42,7 @@ const Albums = ({ artistId }: { artistId: string }) => {
           {hasAlbums ? (
             <div className="flex overflow-x-auto h-full gap-2">
               {albums.map((album) => (
-                <div key={album.id} className="">
+                <div key={album.id}>
                   <Album key={album.id} album={album} />
                 </div>
               ))}
