@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ITrack } from "../../models/track";
+import { getArtistTopTracks } from "../../services/artist";
 
 const initialTracks: ITrack[] = [];
 
@@ -10,17 +11,16 @@ const TopTracks = ({ artistId }: { artistId: string }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
-      setTopTracks([]);
-      setIsLoading(false);
-    }, 1000);
+    getArtistTopTracks({ artistId })
+      .then((tracks) => setTopTracks(tracks.data))
+      .finally(() => setIsLoading(false));
   }, [artistId]);
 
   return (
     <div>
       Top Tracks
       {isLoading ? (
-        <div>Loading</div>
+        <div>Loading Top Tracks...</div>
       ) : (
         <div>
           {hasTopTracks ? (
