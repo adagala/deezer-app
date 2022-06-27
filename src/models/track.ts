@@ -59,3 +59,9 @@ export interface ITrack {
   album: IAlbum;
   type: string;
 }
+
+export interface ITracksResult {
+  data: ITrack[];
+  next: string;
+  total: number;
+}

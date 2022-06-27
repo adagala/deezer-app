@@ -16,3 +16,9 @@ export interface IAlbum {
   explicit_lyrics: boolean;
   type: string;
 }
+
+export interface IAlbumsResult {
+  data: IAlbum[];
+  next: string;
+  total: number;
+}
