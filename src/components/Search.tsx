@@ -1,15 +1,15 @@
 const Search = ({
-  title,
-  onChange,
+  query,
+  onQueryChange,
   onSearchTracks,
 }: {
-  title: string;
-  onChange: (e: any) => void;
+  query: string;
+  onQueryChange: (e: any) => void;
   onSearchTracks: () => Promise<void>;
 }) => {
   return (
     <div>
-      <input value={title} type="text" onChange={onChange} />
+      <input value={query} type="text" onChange={onQueryChange} />
       <button onClick={onSearchTracks} type="button">
         Search
       </button>

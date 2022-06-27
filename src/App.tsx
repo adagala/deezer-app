@@ -1,7 +1,9 @@
 import { useState } from "react";
-import Search from "./components/Search";
-import Tracks from "./components/tracks/Tracks";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import { TracksContext } from "./contexts/TracksContext";
 import { ITrack } from "./models/track";
+import ArtistDetails from "./routes/artist";
 import { getSearchResults } from "./services/tracks";
 
 /*
@@ -61,26 +63,35 @@ const initialTracks: ITrack[] = [];
 function App() {
   const [tracks, setTracks] = useState(initialTracks);
   const [query, setQuery] = useState("");
-  const hasTracks = tracks.length > 0;
-
-  const handleChange = (e: any) => {
-    setQuery(e.target.value);
-  };
 
   const onSearchTracks = async () => {
     const tracks = await getSearchResults({ query });
     setTracks(tracks.data);
   };
 
+  const onQueryChange = (e: any) => {
+    setQuery(e.target.value);
+  };
+
   return (
-    <div>
-      <Search
-        onSearchTracks={onSearchTracks}
-        onChange={handleChange}
-        title={query}
-      />
-      {hasTracks ? <Tracks tracks={tracks} /> : <div>No Tracks</div>}
-    </div>
+    <TracksContext.Provider value={tracks}>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                onQueryChange={onQueryChange}
+                onSearchTracks={onSearchTracks}
+                query={query}
+                tracks={tracks}
+              />
+            }
+          />
+          <Route path=":artistId" element={<ArtistDetails />} />
+        </Routes>
+      </BrowserRouter>
+    </TracksContext.Provider>
   );
 }
 
