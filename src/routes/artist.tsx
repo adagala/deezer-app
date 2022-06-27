@@ -6,8 +6,7 @@ function ArtistDetails() {
   const artistId = params.artistId as string;
 
   return (
-    <main>
-      ID: {artistId}
+    <main className="my-4">
       <Artist artistId={artistId} />
     </main>
   );

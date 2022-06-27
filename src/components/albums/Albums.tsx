@@ -18,16 +18,18 @@ const Albums = ({ artistId }: { artistId: string }) => {
   }, [artistId]);
 
   return (
-    <div>
-      Albums
+    <div className="my-3">
+      <h3 className="text-xl font-bold my-2">Albums</h3>
       {isLoading ? (
         <div>Loading Albums...</div>
       ) : (
         <div>
           {hasAlbums ? (
-            <div>
+            <div className="flex overflow-x-auto h-full gap-2">
               {albums.map((album) => (
-                <Album key={album.id} album={album} />
+                <div key={album.id} className="">
+                  <Album key={album.id} album={album} />
+                </div>
               ))}
             </div>
           ) : (

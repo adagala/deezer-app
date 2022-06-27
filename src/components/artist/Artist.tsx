@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getFans } from "../../@configs/formatter";
 import { IArtist } from "../../models/artist";
 import { getArtist } from "../../services/artist";
 import Albums from "../albums/Albums";
@@ -35,21 +36,51 @@ const Artist = ({ artistId }: { artistId: string }) => {
 
   return (
     <>
-      <div>
-        {isLoading ? (
-          <div>Loading Artist...</div>
-        ) : (
-          <div>
-            <div>
-              <Link to="/">GO Back</Link>
-            </div>
-            <img src={artist.picture_small} alt="artist" />
-            <div>{artist.name}</div>
-            <div>{artist.nb_fan} fans</div>
-          </div>
-        )}
+      <div className="">
+        <Link
+          to="/"
+          className="font-bold p-2 text-sm text-indigo-600 rounded-sm"
+        >
+          Go Back
+        </Link>
       </div>
-      <TopTracks artistId={artistId} />
+      <div className="w-full md:flex md:gap-3">
+        <div className="my-2 md:w-2/3 bg-gray-300 h-40 md:h-80 flex items-center">
+          <div className="w-full">
+            {isLoading ? (
+              <div>Loading Artist...</div>
+            ) : (
+              <div className="p-4 flex items-center justify-between rounded-sm">
+                <div>
+                  <div className="text-xl md:text-3xl font-bold">
+                    {artist.name}
+                  </div>
+                  <div className="md:text-xl font-semibold text-gray-400">
+                    {getFans({ fans: artist.nb_fan })} fans
+                  </div>
+                </div>
+                <div>
+                  <img
+                    className="md:hidden"
+                    src={artist.picture_small}
+                    alt="artist"
+                  />
+                  <img
+                    className="hidden md:block"
+                    src={artist.picture_medium}
+                    alt="artist"
+                    height={150}
+                    width={150}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="md:w-1/3 flex items-center">
+          <TopTracks artistId={artistId} />
+        </div>
+      </div>
       <Albums artistId={artistId} />
     </>
   );

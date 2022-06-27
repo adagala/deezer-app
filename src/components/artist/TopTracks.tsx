@@ -18,19 +18,26 @@ const TopTracks = ({ artistId }: { artistId: string }) => {
   }, [artistId]);
 
   return (
-    <div>
-      Top Tracks
+    <div className="w-full">
+      <h3 className="text-xl font-bold my-2">Top Tracks</h3>
       {isLoading ? (
         <div>Loading Top Tracks...</div>
       ) : (
         <div>
           {hasTopTracks ? (
             <div>
-              Albums
               {topTracks.map((track, i) => (
-                <div key={track.id}>
-                  {i + 1} {track.title}{" "}
-                  {getDuration({ seconds: track.duration })}
+                <div
+                  key={track.id}
+                  className="border-b border-b-gray-400 flex py-2 text-sm"
+                >
+                  <div className="w-5/6 flex">
+                    <div className="font-bold">{i + 1}.</div>
+                    <div className="ml-2">{track?.title}</div>
+                  </div>
+                  <div className="w-1/6 text-gray-400 text-right">
+                    {getDuration({ seconds: track.duration })}
+                  </div>
                 </div>
               ))}
             </div>

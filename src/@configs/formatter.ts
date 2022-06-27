@@ -9,3 +9,11 @@ export const getDuration = (props: { seconds: number }) => {
     secondRemaining < 10 ? `0${secondRemaining}` : secondRemaining;
   return `${minutes}:${seconds}`;
 };
+
+export const getFans = (props: { fans: number }) => {
+  return Math.abs(props.fans) > 999999
+    ? Math.sign(props.fans) * +(Math.abs(props.fans) / 1000000).toFixed(1) + "M"
+    : Math.abs(props.fans) > 999
+    ? Math.sign(props.fans) * +(Math.abs(props.fans) / 1000).toFixed(1) + "K"
+    : Math.sign(props.fans) * Math.abs(props.fans);
+};
