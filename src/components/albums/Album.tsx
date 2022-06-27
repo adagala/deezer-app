@@ -1,3 +1,4 @@
+import { getYear } from "../../@configs/formatter";
 import { IAlbum } from "../../models/album";
 
 const Album = ({ album }: { album: IAlbum }) => {
@@ -7,7 +8,7 @@ const Album = ({ album }: { album: IAlbum }) => {
       <div>
         <b>{album?.title}</b>
       </div>
-      {album?.release_date}
+      {getYear({ date: album?.release_date })}
     </div>
   );
 };

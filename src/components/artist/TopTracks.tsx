@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getDuration } from "../../@configs/formatter";
 import { ITrack } from "../../models/track";
 import { getArtistTopTracks } from "../../services/artist";
 
@@ -28,7 +29,8 @@ const TopTracks = ({ artistId }: { artistId: string }) => {
               Albums
               {topTracks.map((track, i) => (
                 <div key={track.id}>
-                  {i + 1} {track.title} {track.duration}
+                  {i + 1} {track.title}{" "}
+                  {getDuration({ seconds: track.duration })}
                 </div>
               ))}
             </div>

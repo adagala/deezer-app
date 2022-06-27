@@ -47,7 +47,7 @@ export interface ITrack {
   title_short: string;
   title_version: string;
   link: string;
-  duration: string;
+  duration: number;
   rank: string;
   explicit_lyrics: boolean;
   explicit_content_lyrics: number;

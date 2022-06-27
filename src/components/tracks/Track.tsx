@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import { getDuration } from "../../@configs/formatter";
 import { ITrack } from "../../models/track";
 
 const Track = ({ track }: { track: ITrack }) => {
   return (
     <div>
       <img src={track.album.cover_small} alt="Artist Img"></img>
-      <div>{track.duration}</div>
+      <div>{getDuration({ seconds: track.duration })}</div>
       <div>
         <b>{track.title}</b>
       </div>
