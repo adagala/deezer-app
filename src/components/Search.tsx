@@ -7,6 +7,12 @@ const Search = ({
   onQueryChange: (e: any) => void;
   onSearchTracks: () => Promise<void>;
 }) => {
+  const handleKeyDown = (e: any) => {
+    if (e.key === "Enter") {
+      onSearchTracks();
+    }
+  };
+
   return (
     <div className="my-8">
       <input
@@ -17,6 +23,7 @@ const Search = ({
         placeholder="Search tracks"
         value={query}
         onChange={onQueryChange}
+        onKeyDown={handleKeyDown}
       />
       <div className="flex justify-end">
         <button
