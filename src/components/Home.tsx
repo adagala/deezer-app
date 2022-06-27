@@ -1,4 +1,5 @@
 import { ITrack } from "../models/track";
+import Header from "./layout/Header";
 import Search from "./Search";
 import Tracks from "./tracks/Tracks";
 
@@ -19,6 +20,7 @@ const Home = ({
 
   return (
     <>
+      <Header />
       <Search
         onSearchTracks={onSearchTracks}
         onQueryChange={onQueryChange}

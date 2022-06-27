@@ -4,6 +4,7 @@ import { getFans } from "../../@configs/formatter";
 import { IArtist } from "../../models/artist";
 import { getArtist } from "../../services/artist";
 import Albums from "../albums/Albums";
+import Header from "../layout/Header";
 import TopTracks from "./TopTracks";
 
 const initialArtist: IArtist = {
@@ -36,6 +37,7 @@ const Artist = ({ artistId }: { artistId: string }) => {
 
   return (
     <>
+      <Header />
       <div className="">
         <Link
           to="/"
