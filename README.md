@@ -55,30 +55,44 @@ https://deezer-app-c8dc8.web.app/
 
 ## API Reference
 
+### Environment
+
+#### Cloud Functions
+
+```http
+  https://us-central1-deezer-app-c8dc8.cloudfunctions.net
+```
+
+#### Cloud Functions Emulator
+
+```http
+  http://localhost:5001/deezer-app-c8dc8/us-central1
+```
+
 #### Search for tracks
 
 ```http
-  GET https://us-central1-deezer-app-c8dc8.cloudfunctions.net/search/${query}
+  GET /search/${query}
 ```
 
-| Parameter | Type     | Description                                |
-| :-------- | :------- | :----------------------------------------- |
-| `query`   | `string` | **Required**. track your are searching for |
+| Parameter | Type     | Description                               |
+| :-------- | :------- | :---------------------------------------- |
+| `query`   | `string` | **Required**. Track you are searching for |
 
 #### Get artist
 
 ```http
-  GET https://us-central1-deezer-app-c8dc8.cloudfunctions.net/artist/${id}
+  GET /artist/${id}
 ```
 
-| Parameter | Type     | Description                                  |
-| :-------- | :------- | :------------------------------------------- |
-| `id`      | `string` | **Required**. Id of artist to fetch to fetch |
+| Parameter | Type     | Description                         |
+| :-------- | :------- | :---------------------------------- |
+| `id`      | `string` | **Required**. Id of artist to fetch |
 
 #### Get artist's top tracks
 
 ```http
-  GET https://us-central1-deezer-app-c8dc8.cloudfunctions.net/artist/${id}/top
+  GET /artist/${id}/top
 ```
 
 | Parameter | Type     | Description                                    |
@@ -88,7 +102,7 @@ https://deezer-app-c8dc8.web.app/
 #### Get artist's albums
 
 ```http
-  GET https://us-central1-deezer-app-c8dc8.cloudfunctions.net/artist/${id}/albums
+  GET /artist/${id}/albums
 ```
 
 | Parameter | Type     | Description                                |
