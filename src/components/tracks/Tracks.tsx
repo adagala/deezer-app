@@ -41,7 +41,7 @@ const Tracks = ({
           ))}
         </>
       ) : (
-        <div className="h-40 text-2xl flex items-center justify-center font-bold">
+        <div className="h-40 text-2xl md:col-span-3 flex items-center justify-center font-bold">
           No Tracks
         </div>
       )}

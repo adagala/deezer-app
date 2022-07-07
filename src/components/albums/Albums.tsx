@@ -40,7 +40,9 @@ const Albums = ({
               ))}
             </div>
           ) : (
-            <div>No Albums</div>
+            <div className="flex justify-center items-center h-44 font-bold">
+              No Albums
+            </div>
           )}
         </>
       )}
