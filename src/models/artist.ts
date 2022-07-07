@@ -1,3 +1,6 @@
+import { IAlbumsResult } from "./album";
+import { ITracksResult } from "./track";
+
 export interface IArtist {
   id: string;
   name: string;
@@ -13,4 +16,10 @@ export interface IArtist {
   radio: boolean;
   tracklist: string;
   type: string;
+}
+
+export interface IArtistInformationResult {
+  artist: IArtist;
+  albums: IAlbumsResult;
+  topTracks: ITracksResult;
 }

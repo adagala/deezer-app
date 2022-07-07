@@ -1,22 +1,15 @@
-import { useEffect, useState } from "react";
 import { getDuration } from "../../@configs/formatter";
 import { ITrack } from "../../models/track";
-import { getArtistTopTracks } from "../../services/artist";
 import Loader from "../Loader";
 
-const initialTracks: ITrack[] = [];
-
-const TopTracks = ({ artistId }: { artistId: string }) => {
-  const [topTracks, setTopTracks] = useState(initialTracks);
-  const [isLoading, setIsLoading] = useState(false);
+const TopTracks = ({
+  isLoading,
+  topTracks,
+}: {
+  isLoading: boolean;
+  topTracks: ITrack[];
+}) => {
   const hasTopTracks = topTracks.length > 0;
-
-  useEffect(() => {
-    setIsLoading(true);
-    getArtistTopTracks({ artistId })
-      .then((tracks) => setTopTracks(tracks.data))
-      .finally(() => setIsLoading(false));
-  }, [artistId]);
 
   return (
     <div className="w-full">

@@ -1,5 +1,5 @@
 import { IAlbumsResult } from "../../models/album";
-import { IArtist } from "../../models/artist";
+import { IArtist, IArtistInformationResult } from "../../models/artist";
 import { ITracksResult } from "../../models/track";
 
 const API_END_POINT = process.env.REACT_APP_API_END_POINT as string;
@@ -24,4 +24,11 @@ export const getArtistTopTracks = async (props: { artistId: string }) => {
   const response = await fetch(url);
   const result = response.json() as Promise<ITracksResult>;
   return result;
+};
+
+export const getArtistInformation = async (props: { artistId: string }) => {
+  const url = `${ARTIST_END_POINT}${props.artistId}/info`;
+  const response = await fetch(url);
+  const artist = response.json() as Promise<IArtistInformationResult>;
+  return artist;
 };

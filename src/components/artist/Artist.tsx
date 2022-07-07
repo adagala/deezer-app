@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getFans } from "../../@configs/formatter";
+import { IAlbum } from "../../models/album";
 import { IArtist } from "../../models/artist";
-import { getArtist } from "../../services/artist";
+import { ITrack } from "../../models/track";
+import { getArtistInformation } from "../../services/artist";
 import Albums from "../albums/Albums";
 import Header from "../layout/Header";
 import Loader from "../Loader";
@@ -24,15 +26,23 @@ const initialArtist: IArtist = {
   tracklist: "",
   type: "",
 };
+const initialTracks: ITrack[] = [];
+const initialAlbums: IAlbum[] = [];
 
 const Artist = ({ artistId }: { artistId: string }) => {
   const [artist, setArtist] = useState(initialArtist);
+  const [albums, setAlbums] = useState(initialAlbums);
+  const [topTracks, setTopTracks] = useState(initialTracks);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    getArtist({ artistId })
-      .then((a) => setArtist(a))
+    getArtistInformation({ artistId })
+      .then((a) => {
+        setArtist(a.artist);
+        setAlbums(a.albums.data);
+        setTopTracks(a.topTracks.data);
+      })
       .finally(() => setIsLoading(false));
   }, [artistId]);
 
@@ -85,10 +95,10 @@ const Artist = ({ artistId }: { artistId: string }) => {
           </div>
         </div>
         <div className="md:w-1/3 flex items-center">
-          <TopTracks artistId={artistId} />
+          <TopTracks isLoading={isLoading} topTracks={topTracks} />
         </div>
       </div>
-      <Albums artistId={artistId} />
+      <Albums isLoading={isLoading} albums={albums} />
     </>
   );
 };

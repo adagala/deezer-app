@@ -89,6 +89,16 @@ https://deezer-app-c8dc8.web.app/
 | :-------- | :------- | :---------------------------------- |
 | `id`      | `string` | **Required**. Id of artist to fetch |
 
+#### Get artist info
+
+```http
+  GET /artist/${id}/info
+```
+
+| Parameter | Type     | Description                                                                       |
+| :-------- | :------- | :-------------------------------------------------------------------------------- |
+| `id`      | `string` | **Required**. Id of artist to fetch. Returns artist's info, albums and top tracks |
+
 #### Get artist's top tracks
 
 ```http

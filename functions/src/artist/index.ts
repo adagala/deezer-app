@@ -63,4 +63,42 @@ app.get('/:id/top', async (request, response) => {
     }
 });
 
+app.get('/:id/info', async (request, response) => {
+    const { id } = request.params;
+
+    try {
+        const artistResult = await axios.default.get(
+            `${DEEZER_ARTIST_URL}${id}`,
+            {
+                headers: {
+                    Accept: 'application/json',
+                },
+            }
+        );
+        const topTracksResult = await axios.default.get(
+            `${DEEZER_ARTIST_URL}${id}/top`,
+            {
+                headers: {
+                    Accept: 'application/json',
+                },
+            }
+        );
+        const albumsResult = await axios.default.get(
+            `${DEEZER_ARTIST_URL}${id}/albums`,
+            {
+                headers: {
+                    Accept: 'application/json',
+                },
+            }
+        );
+
+        const artist = artistResult.data;
+        const topTracks = topTracksResult.data;
+        const albums = albumsResult.data;
+        response.status(200).send({ artist, albums, topTracks });
+    } catch (err) {
+        console.error(err);
+    }
+});
+
 export const artist = functions.https.onRequest(app);

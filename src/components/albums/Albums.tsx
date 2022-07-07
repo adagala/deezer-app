@@ -1,22 +1,15 @@
-import { useEffect, useState } from "react";
 import { IAlbum } from "../../models/album";
-import { getArtistAlbums } from "../../services/artist";
 import Loader from "../Loader";
 import Album from "./Album";
 
-const initialAlbums: IAlbum[] = [];
-
-const Albums = ({ artistId }: { artistId: string }) => {
-  const [albums, setAlbums] = useState(initialAlbums);
-  const [isLoading, setIsLoading] = useState(false);
+const Albums = ({
+  isLoading,
+  albums,
+}: {
+  isLoading: boolean;
+  albums: IAlbum[];
+}) => {
   const hasAlbums = albums.length > 0;
-
-  useEffect(() => {
-    setIsLoading(true);
-    getArtistAlbums({ artistId })
-      .then((a) => setAlbums(a.data))
-      .finally(() => setIsLoading(false));
-  }, [artistId]);
 
   return (
     <div className="my-3">
