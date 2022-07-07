@@ -3,7 +3,7 @@ import { IAlbum } from "../../models/album";
 
 const Album = ({ album }: { album: IAlbum }) => {
   return (
-    <div className="my-2 p-4 shadow-md w-60 border border-gray-100 rounded-sm dark:border-gray-700 dark:shadow-gray-800">
+    <div className="my-2 p-4 shadow-md w-60 md:2-40 border border-gray-100 rounded-sm dark:border-gray-700 dark:shadow-gray-800">
       <img
         className="w-full"
         src={album?.cover_medium}

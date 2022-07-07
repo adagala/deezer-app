@@ -7,7 +7,6 @@ import { ITrack } from "../../models/track";
 import { getArtistInformation } from "../../services/artist";
 import Albums from "../albums/Albums";
 import Header from "../layout/Header";
-import Loader from "../Loader";
 import TopTracks from "./TopTracks";
 
 const initialArtist: IArtist = {
@@ -61,7 +60,19 @@ const Artist = ({ artistId }: { artistId: string }) => {
         <div className="my-2 md:w-2/3 bg-gray-300 dark:bg-gray-500 h-40 md:h-80 flex items-center">
           <div className="w-full">
             {isLoading ? (
-              <Loader />
+              <div className="p-4 flex items-center justify-between rounded-sm">
+                <div>
+                  <div className="text-xl md:text-3xl font-bold">
+                    <div className="animate-pulse h-5 md:h-8 mt-2 w-32 bg-slate-200 dark:bg-slate-700 rounded"></div>
+                  </div>
+                  <div className="md:text-xl font-semibold text-gray-400 dark:text-gray-300">
+                    <div className="animate-pulse h-5 md:h-7 mt-2 w-16 bg-slate-200 dark:bg-slate-700 rounded"></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="animate-pulse h-20 w-20 md:h-36 md:w-36 bg-slate-200 dark:bg-slate-700"></div>
+                </div>
+              </div>
             ) : (
               <div className="p-4 flex items-center justify-between rounded-sm">
                 <div>
