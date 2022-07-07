@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply mx-6 md:mx-28 lg:mx-60;
+  @apply px-6 md:px-28 lg:px-60 bg-white dark:bg-slate-900 dark:text-gray-200;
 }

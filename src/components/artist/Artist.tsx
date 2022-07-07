@@ -52,13 +52,13 @@ const Artist = ({ artistId }: { artistId: string }) => {
       <div className="">
         <Link
           to="/"
-          className="font-bold p-2 text-sm text-indigo-600 rounded-sm"
+          className="font-bold p-2 text-sm text-indigo-600 rounded-sm dark:text-white hover:underline hover:underline-offset-1"
         >
           Go Back
         </Link>
       </div>
       <div className="w-full md:flex md:gap-3">
-        <div className="my-2 md:w-2/3 bg-gray-300 h-40 md:h-80 flex items-center">
+        <div className="my-2 md:w-2/3 bg-gray-300 dark:bg-gray-500 h-40 md:h-80 flex items-center">
           <div className="w-full">
             {isLoading ? (
               <Loader />
@@ -68,7 +68,7 @@ const Artist = ({ artistId }: { artistId: string }) => {
                   <div className="text-xl md:text-3xl font-bold">
                     {artist.name}
                   </div>
-                  <div className="md:text-xl font-semibold text-gray-400">
+                  <div className="md:text-xl font-semibold text-gray-400 dark:text-gray-300">
                     {getFans({ fans: artist.nb_fan })} fans
                   </div>
                 </div>

@@ -4,7 +4,7 @@ import { ITrack } from "../../models/track";
 
 const Track = ({ track }: { track: ITrack }) => {
   return (
-    <div className="my-6 md:my-0 p-6 shadow-md border border-gray-50">
+    <div className="my-6 md:my-0 p-6 shadow-md border border-gray-50 dark:border-gray-700 dark:shadow-gray-800">
       <img
         className="w-full"
         src={track.album.cover_medium}
