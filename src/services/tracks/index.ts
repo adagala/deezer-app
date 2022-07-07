@@ -1,13 +1,10 @@
 import { ITracksResult } from "../../models/track";
 
-const isProduction: boolean = process.env.NODE_ENV === "production";
-
-const SEARCH_URL = isProduction
-  ? "https://us-central1-deezer-app-c8dc8.cloudfunctions.net/search/"
-  : "http://localhost:5001/deezer-app-c8dc8/us-central1/search/";
+const API_END_POINT = process.env.REACT_APP_API_END_POINT as string;
+const SEARCH_END_POINT = `${API_END_POINT}/search/`;
 
 export const getSearchResults = async (props: { query: string }) => {
-  const url = `${SEARCH_URL}${props.query}`;
+  const url = `${SEARCH_END_POINT}${props.query}`;
   const response = await fetch(url);
   const results = response.json() as Promise<ITracksResult>;
   return results;
